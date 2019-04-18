@@ -8,4 +8,5 @@ https://www.coursera.org/learn/hadoop/home/welcome
 * Apache Sqoop is a tool designed for efficiently transferring bulk data between Apache Hadoop and structured datastores such as relational databases
 * Spark - Data Analytics platform for in-memory computing. Fast and general engine for large-scale data processing. Scala language
 
+### Cloudera VM
 
