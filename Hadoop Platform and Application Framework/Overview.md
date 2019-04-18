@@ -9,4 +9,5 @@ https://www.coursera.org/learn/hadoop/home/welcome
 * Spark - Data Analytics platform for in-memory computing. Fast and general engine for large-scale data processing. Scala language
 
 ### Cloudera VM
+Tutorials: https://www.cloudera.com/developers/get-started-with-hadoop-tutorial/exercise-1.html
 
