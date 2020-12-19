@@ -65,13 +65,9 @@ Nodes and Relationships
 * Nodes and Relationships are the basic building blocks of a graph database.
 * Nodes: Nodes represent entities. A node in graph database is similar to a row in a relational database. In the picture below we can see 2 kinds of nodes - Person and Movie. In writing a cypher query, a node is enclosed between a parenthesis — like (p:Person) where p is a variable and Person is the type of node it is referring to.
 ![](https://github.com/sandhyaparna/NoSQL-BigData/blob/master/NoSQL%20systems/Images/image.png)
-
-
-* Relationship: Two nodes can be connected with a relationship. In the above image ACTED_IN, REVIEWED, PRODUCED, WROTE and DIRECTED are all relationships connecting the corresponding types of nodes.
-
-In writing a cypher query, relationships are enclosed in square brackets - like [w:WORKS_FOR] where w is a variable and WORKS_FOR is the type of relationship it is referring to.
-
-Two nodes can be connected with more than one relationships.
+* Relationship: Two nodes can be connected with a relationship. In the above image ACTED_IN, REVIEWED, PRODUCED, WROTE and DIRECTED are all relationships connecting the corresponding types of nodes. </br>
+In writing a cypher query, relationships are enclosed in square brackets - like [w:WORKS_FOR] where w is a variable and WORKS_FOR is the type of relationship it is referring to. </br>
+Two nodes can be connected with more than one relationships. </br>
 
 MATCH (p:Person)-[d:DIRECTED]-(m:Movie) where m.released > 2010 RETURN p,d,m
 Hint: You can click on the query above to populate it in the editor.
