@@ -3,5 +3,5 @@ Graph database can be used to answer:
 * Routing: How do I get from London to New York
 * Recommendation: Where should I have lunch 
 
-
+Cypher Query Language (CQL)
 
