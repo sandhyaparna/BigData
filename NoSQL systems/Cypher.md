@@ -60,8 +60,12 @@ Table:
 
 What is Cypher?
 Cypher is a graph query language that is used to query the Neo4j Database. Just like you use SQL to query a MySQL database, you would use Cypher to query the Neo4j Database.
-A simple cypher query can look something like this
-Match (m:Movie) where m.released > 2000 RETURN m limit 5
+
+Write a query to retrieve all the movies released after the year 2005. </br>
+Match (m:Movie) where m.released > 2005 RETURN m
+
+Write a query to return the count of movies released after the year 2005. (Hint: you can use the count(m) function to return the count) </br>
+Match (m:Movie) where m.released > 2005 RETURN count(m)
 
 
 
