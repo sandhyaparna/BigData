@@ -52,8 +52,6 @@ Table:
 "released": 2006
   }
 }
-![](https://lh3.googleusercontent.com/ujrT8nIydCGuy42v1VLFa3AWSx4dOs4qdUCACGiU-wJ5LekFb4TRHcQOOjSOuQ_M8dba=s85)
-
 
 
 
