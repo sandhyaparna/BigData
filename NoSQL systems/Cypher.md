@@ -68,16 +68,8 @@ Nodes and Relationships
 * Relationship: Two nodes can be connected with a relationship. In the above image ACTED_IN, REVIEWED, PRODUCED, WROTE and DIRECTED are all relationships connecting the corresponding types of nodes. </br>
 In writing a cypher query, relationships are enclosed in square brackets - like [w:WORKS_FOR] where w is a variable and WORKS_FOR is the type of relationship it is referring to. </br>
 Two nodes can be connected with more than one relationships. </br>
-
-MATCH (p:Person)-[d:DIRECTED]-(m:Movie) where m.released > 2010 RETURN p,d,m
-Hint: You can click on the query above to populate it in the editor.
-Expected Result: The above query will return all Person nodes who directed a movie that was released after 2010.
-
-movies after 2010
-Try
-
-Query to get all the people who acted in a movie that was released after 2010.
-
+* MATCH (p:Person)-[d:DIRECTED]-(m:Movie) where m.released > 2010 RETURN p,d,m. Expected Result: The above query will return all Person nodes who directed a movie that was released after 2010.
+* Query to get all the people who acted in a movie that was released after 2010. </br>
 MATCH (p:Person)-[d:ACTED_IN]-(m:Movie) where m.released > 2010 RETURN p,d,m
 
 
