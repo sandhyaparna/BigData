@@ -112,16 +112,16 @@ Merge Clause
   * match the existing nodes and bind them or
   * create new node(s) and bind them
 * It is a combination of Match and Create and additionally allows to specify additional actions if the data was matched or created.
-* MERGE (p:Person {name: 'John Doe'})
-ON MATCH SET p.lastLoggedInAt = timestamp()
-ON CREATE SET p.createdAt = timestamp()
-Return p
+* MERGE (p:Person {name: 'John Doe'}) </br>
+ON MATCH SET p.lastLoggedInAt = timestamp() </br>
+ON CREATE SET p.createdAt = timestamp() </br>
+Return p </br>
 * The above statement will create the Person node if it does not exist. If the node already exists, then it will set the property lastLoggedInAt to the current timestamp. If node did not exist and was newly created instead, then it will set the createdAt property to the current timestamp.
 * Write a query using Merge to create a movie node with title "Greyhound". If the node does not exist then set its released property to 2020 and lastUpdatedAt property to the current time stamp. If the node already exists, then only set lastUpdatedAt to the current time stamp. Return the movie node. </br>
-MERGE (m:movie {title: 'Greyhound'})
-ON MATCH SET m.lastUpdatedAt = timestamp()
-ON CREATE SET m.released = "2020", m.lastUpdatedAt = timestamp()
-Return m
+MERGE (m:movie {title: 'Greyhound'}) </br>
+ON MATCH SET m.lastUpdatedAt = timestamp() </br>
+ON CREATE SET m.released = "2020", m.lastUpdatedAt = timestamp() </br> </br>
+Return m </br>
 
 
 
