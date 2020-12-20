@@ -51,7 +51,7 @@ RETURN allfields;  </br>
 ### Create a Node
 Create clause can be used to create a new node or a relationship.
 *  Create a new Person node with property name having value John Doe. </br>
-Create (p:Person {name: 'John Doe'}) RETURN p
+Create (p:Person {name: 'John Doe',age:22,nicknames:["Johnie","Johnnn"]}) RETURN p
 * Create a new Person node with a property name having the value of your name.  </br>
 Create (p:Person {name: '<Your Name>'}) RETURN p
 
