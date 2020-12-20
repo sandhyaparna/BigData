@@ -9,7 +9,6 @@ Match (m:Movie) where m.released > 2005 RETURN m limit 5
 * Write a query to return the count of movies released after the year 2005. (Hint: you can use the count(m) function to return the count) </br>
 Match (m:Movie) where m.released > 2005 RETURN count(m)
 
-
 Nodes and Relationships
 * Nodes and Relationships are the basic building blocks of a graph database.
 * Nodes: Nodes represent entities. A node in graph database is similar to a row in a relational database. In the picture below we can see 2 kinds of nodes - Person and Movie. In writing a cypher query, a node is enclosed between a parenthesis — like (p:Person) where p is a variable and Person is the type of node it is referring to.
@@ -37,27 +36,30 @@ will return all kinds of nodes (limiting to 20 items).
 
 Properties
 * Properties are name-value pairs that are used to add attributes to nodes and relationships.
-* To return specific properties of a node you can write -
-* MATCH (m:Movie) return m.title, m.released. Returns movie title and released year
-* Wrtie a query to get name and born properties of the Person node.: MATCH (p:Person) return p.name, p.born
-
+* To return specific properties of a node you can write - </br>
+MATCH (m:Movie) return m.title, m.released.  </br>
+Will return Movie nodes but with only the title and released properties.  </br>
+* Wrtie a query to get name and born properties of the Person node  </br>
+MATCH (p:Person) return p.name, p.born
 
 Create a Node
 Create clause can be used to create a new node or a relationship.
-*  Create a new Person node with property name having value John Doe. Create (p:Person {name: 'John Doe'}) RETURN p
-
-* Create a new Person node with a property name having the value of your name. Create (p:Person {name: '<Your Name>'}) RETURN p
-
+*  Create a new Person node with property name having value John Doe. </br>
+Create (p:Person {name: 'John Doe'}) RETURN p
+* Create a new Person node with a property name having the value of your name.  </br>
+Create (p:Person {name: '<Your Name>'}) RETURN p
 
 Finding Nodes with Match and Where Clause
 * Match clause is used to find nodes that match a particular pattern. This is the primary way of getting data from a Neo4j database.
-* In most cases, a Match is used along with certain conditions to narrow down the result.
-* Match (p:Person {name: 'Tom Hanks'}) RETURN p
-* This is one way of doing it. Although you can only do basic string match based filtering this way (without using WHERE clause).
-* Another way would be to use a WHERE clause which allows for more complex filtering including >, <, Starts With, Ends With, etc
-* MATCH (p:Person) where p.name = "Tom Hanks" RETURN p
-* Find the movie with title "Cloud Atlas". MATCH (m:Movie {title: "Cloud Atlas"}) return m
-* Get all the movies that were released between 2010 and 2015. MATCH (m:Movie) where m.released > 2010 and m.released < 2015 RETURN m
+* In most cases, a Match is used along with certain conditions to narrow down the result. </br>
+Match (p:Person {name: 'Tom Hanks'}) RETURN p </br>
+This is one way of doing it. Although you can only do basic string match based filtering this way (without using WHERE clause) </br>
+Another way would be to use a WHERE clause which allows for more complex filtering including >, <, Starts With, Ends With, etc  </br>
+MATCH (p:Person) where p.name = "Tom Hanks" RETURN p
+* Find the movie with title "Cloud Atlas" </br>
+MATCH (m:Movie {title: "Cloud Atlas"}) return m
+* Get all the movies that were released between 2010 and 2015 </br>
+MATCH (m:Movie) where m.released > 2010 and m.released < 2015 RETURN m
 
 Merge Clause
 * The Merge clause is used to either
@@ -68,13 +70,12 @@ Merge Clause
 ON MATCH SET p.lastLoggedInAt = timestamp() </br>
 ON CREATE SET p.createdAt = timestamp() </br>
 Return p </br>
-* The above statement will create the Person node if it does not exist. If the node already exists, then it will set the property lastLoggedInAt to the current timestamp. If node did not exist and was newly created instead, then it will set the createdAt property to the current timestamp.
+The above statement will create the Person node if it does not exist. If the node already exists, then it will set the property lastLoggedInAt to the current timestamp. If node did not exist and was newly created instead, then it will set the createdAt property to the current timestamp.
 * Write a query using Merge to create a movie node with title "Greyhound". If the node does not exist then set its released property to 2020 and lastUpdatedAt property to the current time stamp. If the node already exists, then only set lastUpdatedAt to the current time stamp. Return the movie node. </br>
 MERGE (m:movie {title: 'Greyhound'}) </br>
 ON MATCH SET m.lastUpdatedAt = timestamp() </br>
 ON CREATE SET m.released = "2020", m.lastUpdatedAt = timestamp() </br>
 Return m </br>
-
 
 Create a Relationship
 * A Relationship connects 2 nodes.
@@ -82,17 +83,17 @@ Create a Relationship
 WHERE p.name = "Tom Hanks" and m.title = "Cloud Atlas" </br>
 CREATE (p)-[w:WATCHED]->(m) </br>
 RETURN type(w) </br>
-* The above statement will create a relationship :WATCHED between the existing Person and Movie nodes and return the type of relationship (i.e WATCHED).
-* Create a relationship :WATCHED between the node you created for yourself previously in step 6 and the movie Cloud Atlas and then return the type of created relationship
-* MATCH (p:Person), (m:Movie) </br>
+The above statement will create a relationship :WATCHED between the existing Person and Movie nodes and return the type of relationship (i.e WATCHED).
+* Create a relationship :WATCHED between the node you created for yourself previously in step 6 and the movie Cloud Atlas and then return the type of created relationship </br>
+MATCH (p:Person), (m:Movie) </br>
 WHERE p.name = "<Your Name>" and m.title = "Cloud Atlas" </br>
 CREATE (p)-[w:WATCHED]->(m) </br>
 RETURN type(w) </br>
 
 Relationship Types
 * In Neo4j, there can be 2 kinds of relationships - incoming and outgoing.
-
-* In the above picture, the Tom Hanks node is said to have an outgoing relationship while Forrest Gump node is said to have an incoming relationship.
+![](https://github.com/sandhyaparna/NoSQL-BigData/blob/master/NoSQL%20systems/Images/RealtionshipTypes1.PNG)
+In the above picture, the Tom Hanks node is said to have an outgoing relationship while Forrest Gump node is said to have an incoming relationship.
 * Relationships always have a direction. However, you only have to pay attention to the direction where it is useful.
 * To denote an outgoing or an incoming relationship in cypher, we use → or ←.
 * MATCH (p:Person)-[r:ACTED_IN]->(m:Movie) RETURN p,r,m
