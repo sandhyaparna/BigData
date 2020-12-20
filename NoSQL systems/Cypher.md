@@ -55,6 +55,11 @@ Create (p:Person {name: 'John Doe',age:22,nicknames:["Johnie","Johnnn"]}) RETURN
 * Create a new Person node with a property name having the value of your name.  </br>
 Create (p:Person {name: '<Your Name>'}) RETURN p
 
+### Update Properties
+Match (p:Person {name: 'Tom Hanks'}) SET p.name="Tom" RETURN p
+Match (p:Person {name: 'Tom Hanks'}) SET p.age:23 RETURN p
+
+
 ### Finding Nodes with Match and Where Clause
 * Match clause is used to find nodes that match a particular pattern. This is the primary way of getting data from a Neo4j database.
 * In most cases, a Match is used along with certain conditions to narrow down the result. </br>
