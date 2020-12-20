@@ -1,59 +1,3 @@
-Table:
-{ 
-  "identity": 9,
-  "labels": [
-    "Movie"
-  ],
-  "properties": {
-"title": "The Matrix Reloaded",
-"tagline": "Free your mind",
-"released": 2003
-  }
-}
-{
-  "identity": 10,
-  "labels": [
-    "Movie"
-  ],
-  "properties": {
-"title": "The Matrix Revolutions",
-"tagline": "Everything that has a beginning has an end",
-"released": 2003
-  }
-{
-  "identity": 154,
-  "labels": [
-    "Movie"
-  ],
-  "properties": {
-"title": "Something's Gotta Give",
-"released": 2003
-  }
-}
-{
-  "identity": 161,
-  "labels": [
-    "Movie"
-  ],
-  "properties": {
-"title": "The Polar Express",
-"tagline": "This Holiday Season… Believe",
-"released": 2004
-  }
-}
-{
-  "identity": 92,
-  "labels": [
-    "Movie"
-  ],
-  "properties": {
-"title": "RescueDawn",
-"tagline": "Based on the extraordinary true story of one man's fight for freedom",
-"released": 2006
-  }
-}
-
-
 What is Cypher?
 Cypher is a graph query language that is used to query the Neo4j Database. Just like you use SQL to query a MySQL database, you would use Cypher to query the Neo4j Database.
 * Write a query to retrieve all the movies released after the year 2005. </br>
@@ -120,24 +64,51 @@ Return p </br>
 * Write a query using Merge to create a movie node with title "Greyhound". If the node does not exist then set its released property to 2020 and lastUpdatedAt property to the current time stamp. If the node already exists, then only set lastUpdatedAt to the current time stamp. Return the movie node. </br>
 MERGE (m:movie {title: 'Greyhound'}) </br>
 ON MATCH SET m.lastUpdatedAt = timestamp() </br>
-ON CREATE SET m.released = "2020", m.lastUpdatedAt = timestamp() </br> </br>
+ON CREATE SET m.released = "2020", m.lastUpdatedAt = timestamp() </br>
 Return m </br>
 
 
+Create a Relationship
+* A Relationship connects 2 nodes.
+* MATCH (p:Person), (m:Movie) </br>
+WHERE p.name = "Tom Hanks" and m.title = "Cloud Atlas" </br>
+CREATE (p)-[w:WATCHED]->(m) </br>
+RETURN type(w) </br>
+* The above statement will create a relationship :WATCHED between the existing Person and Movie nodes and return the type of relationship (i.e WATCHED).
+* Create a relationship :WATCHED between the node you created for yourself previously in step 6 and the movie Cloud Atlas and then return the type of created relationship
+* MATCH (p:Person), (m:Movie) </br>
+WHERE p.name = "<Your Name>" and m.title = "Cloud Atlas" </br>
+CREATE (p)-[w:WATCHED]->(m) </br>
+RETURN type(w) </br>
+
+Relationship Types
+* In Neo4j, there can be 2 kinds of relationships - incoming and outgoing.
+
+* In the above picture, the Tom Hanks node is said to have an outgoing relationship while Forrest Gump node is said to have an incoming relationship.
+* Relationships always have a direction. However, you only have to pay attention to the direction where it is useful.
+* To denote an outgoing or an incoming relationship in cypher, we use → or ←.
+* MATCH (p:Person)-[r:ACTED_IN]->(m:Movie) RETURN p,r,m
+* In the above query Person has an outgoing relationship and movie has an incoming relationship.
+* Although, in the case of the movies dataset, the direction of the relationship is not that important and even without denoting the direction in the query, it will return the same result. So the query - </br>
+MATCH (p:Person)-[:ACTED_IN]-(m:Movie) RETURN p,r,m </br>
+will return the same reuslt as the above one. </br>
+* Write a query to find the nodes Person and Movie which are connected by REVIEWED relationship and is outgoing from the Person node and incoming to the Movie node.
+* MATCH (p:Person)-[r:REVIEWED]-(m:Movie) return p,r,m
 
 
+Advcance Cypher queries
+* Finding who directed Cloud Atlas movie </br>
+MATCH (m:Movie {title: 'Cloud Atlas'})<-[d:DIRECTED]-(p:Person) return p.name
+* Finding all people who have co-acted with Tom Hanks in any movie </br>
+MATCH (tom:Person {name: "Tom Hanks"})-[:ACTED_IN]->(:Movie)<-[:ACTED_IN]-(p:Person) return p.name
+* Finding all people related to the movie Cloud Atlas in any way </br>
+MATCH (p:Person)-[relatedTo]-(m:Movie {title: "Cloud Atlas"}) return p.name, type(relatedTo) </br>
+In the above query we only used the variable relatedTo which will try to find all the relationships between any Person node and the movie node "Cloud Atlas"
+* Finding Movies and Actors that are 3 hops away from Kevin Bacon. </br>
+MATCH (p:Person {name: 'Kevin Bacon'})-[*1..3]-(hollywood) return DISTINCT p, hollywood </br>
+Note: in the above query, hollywood refers to any node in the database (in this case Person and Movie nodes)
 
-
-
-
-
-
-
-
-
-
-
-
+https://neo4j.com/docs/cypher-manual/4.0/
 
 
 
