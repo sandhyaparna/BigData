@@ -5,7 +5,7 @@ Match (m:Movie) where m.released > 2005 RETURN m
 ![](https://github.com/sandhyaparna/NoSQL-BigData/blob/master/NoSQL%20systems/Images/Cypher1.png)
 * Write a query to retrieve 5 movies released after the year 2005. </br>
 Match (m:Movie) where m.released > 2005 RETURN m limit 5
-![](https://github.com/sandhyaparna/NoSQL-BigData/blob/master/NoSQL%20systems/Images/Cypher2.png)
+![](https://github.com/sandhyaparna/NoSQL-BigData/blob/master/NoSQL%20systems/Images/Cypher2.PNG)
 * Write a query to return the count of movies released after the year 2005. (Hint: you can use the count(m) function to return the count) </br>
 Match (m:Movie) where m.released > 2005 RETURN count(m)
 
