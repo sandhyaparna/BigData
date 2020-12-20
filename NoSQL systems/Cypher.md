@@ -56,8 +56,8 @@ Create (p:Person {name: 'John Doe',age:22,nicknames:["Johnie","Johnnn"]}) RETURN
 Create (p:Person {name: '<Your Name>'}) RETURN p
 
 ### Update Properties
-Match (p:Person {name: 'Tom Hanks'}) SET p.name="Tom" RETURN p
-Match (p:Person {name: 'Tom Hanks'}) SET p.age:23 RETURN p
+Match (p:Person {name: 'Tom Hanks'}) SET p.name="Tom" RETURN p  </br>
+Match (p:Person {name: 'Tom Hanks'}) SET p.age:23 RETURN p  </br>
 
 
 ### Finding Nodes with Match and Where Clause
