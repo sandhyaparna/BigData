@@ -41,6 +41,10 @@ MATCH (m:Movie) return m.title, m.released.  </br>
 Will return Movie nodes but with only the title and released properties.  </br>
 * Wrtie a query to get name and born properties of the Person node  </br>
 MATCH (p:Person) return p.name, p.born
+* To get properties of Movie node  </br>
+Match (m:Movie)  WITH DISTINCT keys(m) AS keys  </br>
+UNWIND keys AS keyslisting WITH DISTINCT keyslisting AS allfields  </br>
+RETURN allfields;  </br>
 
 ### Create a Node
 Create clause can be used to create a new node or a relationship.
