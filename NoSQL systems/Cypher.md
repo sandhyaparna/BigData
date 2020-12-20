@@ -13,23 +13,27 @@ Match (m:Movie) where m.released > 2005 RETURN count(m)
 Nodes and Relationships
 * Nodes and Relationships are the basic building blocks of a graph database.
 * Nodes: Nodes represent entities. A node in graph database is similar to a row in a relational database. In the picture below we can see 2 kinds of nodes - Person and Movie. In writing a cypher query, a node is enclosed between a parenthesis — like (p:Person) where p is a variable and Person is the type of node it is referring to.
-![](https://github.com/sandhyaparna/NoSQL-BigData/blob/master/NoSQL%20systems/Images/image.png)
+![](https://github.com/sandhyaparna/NoSQL-BigData/blob/master/NoSQL%20systems/Images/Realtionship1.PNG)
 * Relationship: Two nodes can be connected with a relationship. In the above image ACTED_IN, REVIEWED, PRODUCED, WROTE and DIRECTED are all relationships connecting the corresponding types of nodes. </br>
 In writing a cypher query, relationships are enclosed in square brackets - like [w:WORKS_FOR] where w is a variable and WORKS_FOR is the type of relationship it is referring to. </br>
 Two nodes can be connected with more than one relationships. </br>
-* MATCH (p:Person)-[d:DIRECTED]-(m:Movie) where m.released > 2010 RETURN p,d,m. Expected Result: The above query will return all Person nodes who directed a movie that was released after 2010.
+* MATCH (p:Person)-[d:DIRECTED]-(m:Movie) where m.released > 2010 RETURN p,d,m. </br>
+Expected Result: The above query will return all Person nodes who directed a movie that was released after 2010.
+![](https://github.com/sandhyaparna/NoSQL-BigData/blob/master/NoSQL%20systems/Images/Realtionship2.PNG)
 * Query to get all the people who acted in a movie that was released after 2010. </br>
 MATCH (p:Person)-[d:ACTED_IN]-(m:Movie) where m.released > 2010 RETURN p,d,m
-
+![](https://github.com/sandhyaparna/NoSQL-BigData/blob/master/NoSQL%20systems/Images/Realtionship3.PNG)
 
 Labels
 * Labels is a name or identifer of a Node or a Relationship. In the image below Movie and Person are Node labels and ACTED_IN, REVIEWED, etc are Relationship labels.
 * In writing a cypher query, Labels are prefixed with a colon - like :Person or :ACTED_IN. You can assign the node label to a variable by prefixing the syntax with the variable name. Like (p:Person) means p variable denoted Person labeled nodes.
-* Labels are used when you want to perform operations only on a specific types of Nodes. Like
-* MATCH (p:Person) RETURN p limit 20. will return only Person Nodes (limiting to 20 items) while
-
-* MATCH (n) RETURN n limit 20. will return all kinds of nodes (limiting to 20 items).
-
+* Labels are used when you want to perform operations only on a specific types of Nodes </br>
+MATCH (p:Person) RETURN p limit 20 </br>
+will return only Person Nodes (limiting to 20 items)  </br>
+![](https://github.com/sandhyaparna/NoSQL-BigData/blob/master/NoSQL%20systems/Images/Labels2.png)
+* MATCH (n) RETURN n limit 20 </br>
+will return all kinds of nodes (limiting to 20 items).
+![](https://github.com/sandhyaparna/NoSQL-BigData/blob/master/NoSQL%20systems/Images/Labels1.png)
 
 Properties
 * Properties are name-value pairs that are used to add attributes to nodes and relationships.
