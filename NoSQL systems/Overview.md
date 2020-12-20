@@ -6,7 +6,7 @@ NEO4J:
 * Cypher
 * Property Graph Data Model
 * Supports unique constraints
-* Exorting data to Json and XLS format
+* Exporting data to Json and XLS format
 
 
 
